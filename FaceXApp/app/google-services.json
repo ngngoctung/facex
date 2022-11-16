@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "154506072992",
+    "project_id": "facexjavaproject",
+    "storage_bucket": "facexjavaproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:154506072992:android:7c47e870b7d75070fd4ac5",
+        "android_client_info": {
+          "package_name": "com.example.facexapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "154506072992-mflvikrseka7l3bbjirog5ejeds20jil.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.facexapp",
+            "certificate_hash": "0b3905ab1b01e09061e98c0d73610b697c2c9f8c"
+          }
+        },
+        {
+          "client_id": "154506072992-ahen1d7n9jbpu9toj8vruvnhlnit9an4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAW4wuUw4F4vST_U8hWLU0Vg-pySOaxUo0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "154506072992-ahen1d7n9jbpu9toj8vruvnhlnit9an4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
