@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "48405671259",
+    "project_id": "javaapp-81dfa",
+    "storage_bucket": "javaapp-81dfa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:48405671259:android:5bf6f719ce1b65b9a7be7e",
+        "android_client_info": {
+          "package_name": "com.khtn.facexapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "48405671259-96bemek777u1inb342asha9tifr3tde0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.khtn.facexapp",
+            "certificate_hash": "0b3905ab1b01e09061e98c0d73610b697c2c9f8c"
+          }
+        },
+        {
+          "client_id": "48405671259-kmd4rgjk3cs6uu1bjgc5ed5ta39vgtn8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKIbSOB8RudYi1GlH9McKEYvQcSFCdDfg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "48405671259-kmd4rgjk3cs6uu1bjgc5ed5ta39vgtn8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
