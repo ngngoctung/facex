@@ -47,10 +47,18 @@ public class CreateClassAcitivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 String nameClass = className.getText().toString().trim();
-                Request request = new Request();
-                request.setChooseClass(nameClass);
-                Toast.makeText(CreateClassAcitivity.this,nameClass, Toast.LENGTH_SHORT).show();
-                gotoAddStudent();
+                if(nameClass.isEmpty())
+                {
+                    Toast.makeText(CreateClassAcitivity.this,"Name of class is empty", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Request request = new Request();
+                    request.setChooseClass(nameClass);
+                    Toast.makeText(CreateClassAcitivity.this,nameClass, Toast.LENGTH_SHORT).show();
+                    gotoAddStudent();
+                }
+
             }
         });
 

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -42,12 +43,20 @@ public class AddStudent extends AppCompatActivity {
             public void onClick(View view) {
                 String nameOfStudent = name.getText().toString().trim();
                 int idOfStudent = Integer.parseInt(id.getText().toString().trim());
-                Student student = new Student(nameOfStudent, idOfStudent);
+                if(nameOfStudent.isEmpty())
+                {
+                    Toast.makeText(AddStudent.this,"Name/ID empty", Toast.LENGTH_SHORT).show();
+                }
+                else
+                {
+                    Student student = new Student(nameOfStudent, idOfStudent);
 
-                FirebaseDatabase database = FirebaseDatabase.getInstance();
-                DatabaseReference myRef = database.getReference("Test");
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Class");
 
-                myRef.child(request.getChooseClass()).child(id.getText().toString().trim()).setValue(student);
+                    myRef.child(request.getChooseClass()).child(id.getText().toString().trim()).setValue(student);
+                }
+
             }
         });
 
