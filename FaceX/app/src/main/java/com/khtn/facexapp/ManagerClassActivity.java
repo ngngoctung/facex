@@ -34,6 +34,7 @@ public class ManagerClassActivity extends AppCompatActivity {
         classCreatedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                gotoCtreatedClassActivity();
             }
         });
         //         click createnewClassBtn
@@ -74,4 +75,10 @@ public class ManagerClassActivity extends AppCompatActivity {
         Intent intent = new Intent(this, ManagerActivity.class);
         startActivity(intent);
     }
+
+    private void gotoCtreatedClassActivity() {
+        Intent intent = new Intent(this, CreatedClassActivity.class);
+        startActivity(intent);
+    }
+
 }

@@ -129,12 +129,7 @@ public class RollCallActivity extends AppCompatActivity {
                 ClassName = array.get(position);
                 Request request = new Request();
                 request.setChooseClass(ClassName);
-//                Intent intent1 = new Intent(inputrollcallActivity.this, rollcallActivity.class);
-//                Bundle bundle1 = new Bundle();
-//                bundle1.putString("classes", ClassName);
-//                intent1.putExtra("data",bundle1);
-//                startActivity(intent1);
-                Toast.makeText(RollCallActivity.this,"you chose class: " + request.getChooseClass(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(RollCallActivity.this,"you chose class: " + request.getChooseClass(), Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

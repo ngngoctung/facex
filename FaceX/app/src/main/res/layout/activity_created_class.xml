@@ -7,7 +7,7 @@
     android:background="#EAEAEA">
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textView100"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#252A34"
@@ -17,20 +17,7 @@
 
 
     <TextView
-        android:id="@+id/tvLogOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="320dp"
-        android:layout_marginTop="16dp"
-        android:text="LOG OUT"
-        android:textColor="#fff"
-        android:textSize="20sp"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView4" />
-
-    <TextView
-        android:id="@+id/lecturer_title"
+        android:id="@+id/manager_title"
         android:layout_width="381dp"
         android:layout_height="127dp"
         android:layout_marginStart="16dp"
@@ -44,63 +31,63 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textView100" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView100"
         android:layout_width="48dp"
         android:layout_height="53dp"
         android:layout_marginEnd="12dp"
-        app:layout_constraintBottom_toBottomOf="@+id/spnChooseClass"
-        app:layout_constraintEnd_toEndOf="@+id/spnChooseClass"
-        app:layout_constraintTop_toTopOf="@+id/spnChooseClass"
+        app:layout_constraintBottom_toBottomOf="@+id/spnCreatedClass"
+        app:layout_constraintEnd_toEndOf="@+id/spnCreatedClass"
+        app:layout_constraintTop_toTopOf="@+id/spnCreatedClass"
         app:srcCompat="@drawable/arrow_drop_down" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textView101"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="LECTURER:"
+        android:text="MANAGER:"
         android:textColor="#252A34"
         android:textSize="34sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/lecturer_title"
+        app:layout_constraintEnd_toEndOf="@+id/manager_title"
         app:layout_constraintHorizontal_bias="0.096"
-        app:layout_constraintStart_toStartOf="@+id/lecturer_title"
-        app:layout_constraintTop_toTopOf="@+id/lecturer_title" />
+        app:layout_constraintStart_toStartOf="@+id/manager_title"
+        app:layout_constraintTop_toTopOf="@+id/manager_title" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/textView102"
         android:layout_width="379dp"
         android:layout_height="431dp"
         android:background="@drawable/btn_bg"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/lecturer_title"
+        app:layout_constraintEnd_toEndOf="@+id/manager_title"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/lecturer_title"
-        app:layout_constraintTop_toBottomOf="@+id/lecturer_title"
+        app:layout_constraintStart_toStartOf="@+id/manager_title"
+        app:layout_constraintTop_toBottomOf="@+id/manager_title"
         app:layout_constraintVertical_bias="0.195" />
 
     <Button
-        android:id="@+id/resetPassBtn"
+        android:id="@+id/displayButton"
         android:layout_width="180dp"
         android:layout_height="58dp"
         android:layout_marginTop="88dp"
         android:backgroundTint="#FF2E63"
         android:inputType="text"
-        android:text="Attendance"
+        android:text="Display"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
         app:cornerRadius="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/textView102"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/spnChooseClass" />
+        app:layout_constraintStart_toStartOf="@+id/textView102"
+        app:layout_constraintTop_toBottomOf="@+id/spnCreatedClass" />
 
     <Spinner
-        android:id="@+id/spnChooseClass"
+        android:id="@+id/spnCreatedClass"
         android:layout_width="257dp"
         android:layout_height="57dp"
         android:layout_alignParentEnd="true"
@@ -115,37 +102,37 @@
         app:layout_constraintHorizontal_bias="0.493"
         app:layout_constraintStart_toStartOf="parent"
 
-        app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
+        app:layout_constraintTop_toBottomOf="@+id/textView103" />
 
     <TextView
-        android:id="@+id/tvTeacherName"
+        android:id="@+id/tvMngName"
         android:layout_width="344dp"
         android:layout_height="42dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="4dp"
         android:paddingLeft="10dp"
         android:text="Manager's name"
         android:textColor="#252A34"
         android:textSize="24sp"
         android:textStyle="bold|italic"
-        app:layout_constraintEnd_toEndOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/textView101"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+        app:layout_constraintStart_toStartOf="@+id/textView101"
+        app:layout_constraintTop_toBottomOf="@+id/textView101" />
+
 
     <TextView
-        android:id="@+id/textView9"
+        android:id="@+id/textView103"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:text="Choose class"
+        android:text="Created class"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintEnd_toEndOf="@+id/textView102"
         app:layout_constraintHorizontal_bias="0.216"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toTopOf="@+id/textView8" />
+        app:layout_constraintStart_toStartOf="@+id/textView102"
+        app:layout_constraintTop_toTopOf="@+id/textView102" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
