@@ -8,8 +8,14 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.khtn.facexapp.adapter.StudentAdapter;
 import com.khtn.facexapp.model.Student;
 
@@ -23,22 +29,31 @@ public class ListStudentResultActivity extends AppCompatActivity {
     private StudentAdapter adapter;
     private List<Student> list;
 
+    Request request = new Request();
+
+
     public ListStudentResultActivity() {
         list = new ArrayList<>();
 
-        list.add(new Student(1, R.drawable.person_icon, "Phan Tân", "MSSV: 19200473"));
-        list.add(new Student(2, R.drawable.person_icon, "Nguyễn Văn A ", "MSSV: 19200473"));
-        list.add(new Student(3, R.drawable.person_icon, "Nguyễn Văn B", "MSSV: 19200234"));
-        list.add(new Student(4, R.drawable.person_icon, "Nguyễn Văn C", "MSSV: 19200342"));
-        list.add(new Student(5, R.drawable.person_icon, "Nguyễn Văn D", "MSSV: 19200234"));
-        list.add(new Student(6, R.drawable.person_icon, "Nguyễn Văn E", "MSSV: 19200345"));
-        list.add(new Student(7, R.drawable.person_icon, "Nguyễn Văn F", "MSSV: 19200542"));
-        list.add(new Student(8, R.drawable.person_icon, "Nguyễn Văn G", "MSSV: 19200656"));
-        list.add(new Student(9, R.drawable.person_icon, "Nguyễn Văn H", "MSSV: 19200676"));
-        list.add(new Student(10, R.drawable.person_icon, "Nguyễn Văn P", "MSSV: 19200342"));
-        list.add(new Student(11, R.drawable.person_icon, "Nguyễn Văn K", "MSSV: 19200456"));
-        list.add(new Student(12, R.drawable.person_icon, "Nguyễn Văn T", "MSSV: 19200786"));
-//
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Class").child(request.getChooseClass());
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    Student student = dataSnapshot.getValue(Student.class);
+                    list.add(student);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
         adapter = new StudentAdapter(this, list);
     }
     @Override

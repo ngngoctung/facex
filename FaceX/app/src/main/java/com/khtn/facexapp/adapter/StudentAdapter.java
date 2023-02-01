@@ -42,15 +42,11 @@ public class StudentAdapter extends BaseAdapter {
             view = LayoutInflater.from(context).inflate(R.layout.layout_student_item, null);
         }
 
-        TextView tvstudentID = view.findViewById(R.id.tvStudentId);
-        ImageView ivstudentImg = view.findViewById(R.id.ivStudentImg);
         TextView tvName = view.findViewById(R.id.tvStudentName);
         TextView tvDesc = view.findViewById(R.id.tvStudentDesc);
         Student std = list.get(i);
-        tvstudentID.setText(String.valueOf(std.getStudentID()));
-        ivstudentImg.setImageResource(std.getImgID());
-        tvName.setText(std.getStudentName());
-        tvDesc.setText(std.getStudentDesc());
+        tvName.setText(std.getName());
+        tvDesc.setText(String.valueOf(std.getId()));
         return view;
     }
 }
