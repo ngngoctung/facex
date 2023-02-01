@@ -16,6 +16,12 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class SignInActivity extends AppCompatActivity {
@@ -79,9 +85,33 @@ public class SignInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "signInWithEmail:success");
+                    //check account is manager of teacher
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+                            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+                            FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+                            DatabaseReference dataRef1 = database.getReference("users/" + firebaseUser.getUid() + "/role");
+                            dataRef1.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                    String role = dataSnapshot.getValue(String.class);
+                                    Toast.makeText(SignInActivity.this, "role: " + role, Toast.LENGTH_SHORT).show();
+                                    if (role.equals("teacher")) {
+                                        // go to the teacher activity interface
+                                        gotoRollCallActivity();
+                                    } else if (role.equals("manager")) {
+                                        // go to the manager activity interface
+                                        gotoManagerActivity();
+                                    }
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    // handle the error
+                                }
+                            });
+
 //                            FirebaseUser user = mAuth.getCurrentUser();
 //                            updateUI(user);
-                            gotoRollCallActivity();
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail:failure", task.getException());
@@ -90,6 +120,12 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    private void gotoManagerActivity() {
+        Intent intent = new Intent(this,ManagerActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
     private void gotoRollCallActivity() {

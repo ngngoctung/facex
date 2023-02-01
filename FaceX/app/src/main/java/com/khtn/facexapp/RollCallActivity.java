@@ -10,14 +10,21 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
 public class RollCallActivity extends AppCompatActivity {
-    private TextView LogOut;
+    private TextView TeacherName, LogOut;
     Intent intent = getIntent();
     private Spinner spnClasses;
     private Button btnAttendance;
@@ -29,9 +36,31 @@ public class RollCallActivity extends AppCompatActivity {
         setContentView(R.layout.activity_roll_call);
 
         setToolbarTitle();
+        getInfoTeacher();
         initUI();
         setSpiner();
         initListener();
+    }
+
+    private void getInfoTeacher() {
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
+
+        DatabaseReference dataRef2 = database.getReference("users/" + firebaseUser.getUid() + "/name");
+        dataRef2.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String name = dataSnapshot.getValue(String.class);
+                TeacherName.setText(name.trim());
+                Toast.makeText(RollCallActivity.this, "Hi : " + name, Toast.LENGTH_SHORT).show();
+
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // handle the error
+            }
+        });
     }
 
     private void setToolbarTitle() {
@@ -93,8 +122,9 @@ public class RollCallActivity extends AppCompatActivity {
     }
 
     private void initUI() {
+        TeacherName = findViewById((R.id.tvTeacherName));
         spnClasses = findViewById(R.id.spnChooseClass);
-        btnAttendance = findViewById(R.id.btnAttendance);
+        btnAttendance = findViewById(R.id.resetPassBtn);
         LogOut = findViewById(R.id.tvLogOut);
     }
 
