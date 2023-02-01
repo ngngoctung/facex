@@ -83,6 +83,8 @@ public class RollCallActivity extends AppCompatActivity {
                 Intent intent = new Intent(RollCallActivity.this, RollCallStudentActivity.class);
                 startActivity(intent);
             }
+
+
         });
     }
 
@@ -93,26 +95,46 @@ public class RollCallActivity extends AppCompatActivity {
     }
 
     private void setSpiner() {
+
+
         ArrayList<String> array = new ArrayList<>();
-        array.add("19DTV3A");
-        array.add("19DTV3B");
-        array.add("19DTV3C");
-        array.add("CNTT1");
-        array.add("CNTT2");
+        array.add(" ");
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("Class");
+
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
+                    // TODO: handle the post
+//                    Toast.makeText(RollCallActivity.this," Name of class = " + ,Toast.LENGTH_LONG).show();
+                    array.add(dataSnapshot.getKey());
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
         ArrayAdapter adapter = new ArrayAdapter<>(this, androidx.appcompat.R.layout.support_simple_spinner_dropdown_item, array);
         spnClasses.setAdapter(adapter);
-//Xử lí sự kiện khi click vào item:
+        //Xử lí sự kiện khi click vào item:
         spnClasses.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 ClassName = array.get(position);
+                Request request = new Request();
+                request.setChooseClass(ClassName);
 //                Intent intent1 = new Intent(inputrollcallActivity.this, rollcallActivity.class);
 //                Bundle bundle1 = new Bundle();
 //                bundle1.putString("classes", ClassName);
 //                intent1.putExtra("data",bundle1);
 //                startActivity(intent1);
-                Toast.makeText(RollCallActivity.this,"you chose class: " + ClassName, Toast.LENGTH_SHORT).show();
+                Toast.makeText(RollCallActivity.this,"you chose class: " + request.getChooseClass(), Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
