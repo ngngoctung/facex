@@ -56,6 +56,7 @@ public class ListStudentResultActivity extends AppCompatActivity {
 
         adapter = new StudentAdapter(this, list);
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

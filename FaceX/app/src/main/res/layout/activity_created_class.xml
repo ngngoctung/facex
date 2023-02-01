@@ -133,6 +133,15 @@
         app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="@+id/textView102"
         app:layout_constraintTop_toTopOf="@+id/textView102" />
+    <ImageView
+        android:id="@+id/ivBackCreatedClass"
+        android:layout_width="48dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/signout_icon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textView100" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

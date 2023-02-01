@@ -3,10 +3,13 @@ package com.khtn.facexapp;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,8 +25,10 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 
 public class CreatedClassActivity extends AppCompatActivity {
+    private ImageView ivBack;
     private TextView ManaName;
     private Spinner spnClasses;
+    private Button displayBtn;
     String ClassName;
 
     @Override
@@ -101,7 +106,19 @@ public class CreatedClassActivity extends AppCompatActivity {
     }
 
     private void initListener() {
+        displayBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoStudentCreatedClassActivity();
+            }
+        });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                gotoManagerClassActivity();
+            }
+        });
     }
 
     private void setTitileToolbar() {
@@ -111,5 +128,22 @@ public class CreatedClassActivity extends AppCompatActivity {
     private void initUI() {
         ManaName = findViewById(R.id.tvMngName);
         spnClasses = findViewById(R.id.spnCreatedClass);
+        displayBtn = findViewById(R.id.displayButton);
+        ivBack = findViewById(R.id.ivBackCreatedClass);
     }
+
+    private void gotoStudentCreatedClassActivity() {
+        Intent intent = new Intent(this,StudentCreatedClassActivity.class);
+        startActivity(intent);
+        finishAffinity();
+    }
+
+    private void gotoManagerClassActivity() {
+        Intent intent = new Intent(this,ManagerClassActivity.class);
+        startActivity(intent);
+        finishAffinity();
+    }
+
+
+
 }
