@@ -13,13 +13,6 @@
         android:theme="@style/Theme.FaceX"
         tools:targetApi="31">
         <activity
-            android:name=".StudentCreatedClassActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".CreatedClassActivity"
             android:exported="false">
             <meta-data

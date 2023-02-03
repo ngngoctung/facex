@@ -10,13 +10,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.khtn.facexapp.adapter.StudentAdapter;
 import com.khtn.facexapp.model.Student;
 
 import java.util.ArrayList;
@@ -26,15 +28,18 @@ public class ListStudentResultActivity extends AppCompatActivity {
     private ImageView ivBackRollCall;
     private Button btnExport;
     private Button btnFinish;
-    private StudentAdapter adapter;
-    private List<Student> list;
+    RecyclerView rcvStudent;
+    private StudentsAdapter mStudentsAdapter;
+    private  List<Student> mListStudent;
+
 
     Request request = new Request();
 
 
     public ListStudentResultActivity() {
-        list = new ArrayList<>();
+    }
 
+    private  void getListStudentFromFirebase(){
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference myRef = database.getReference("Class").child(request.getChooseClass());
 
@@ -43,18 +48,17 @@ public class ListStudentResultActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Student student = dataSnapshot.getValue(Student.class);
-                    list.add(student);
+                    mListStudent.add(student);
                 }
+                mStudentsAdapter.notifyDataSetChanged();
 
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Toast.makeText(ListStudentResultActivity.this, "Get list failed", Toast.LENGTH_SHORT).show();
             }
         });
-
-        adapter = new StudentAdapter(this, list);
     }
 
     @Override
@@ -63,15 +67,12 @@ public class ListStudentResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_student_result);
 
         setToolBarTitle();
-        initListView();
         initUI();
         initListener();
+
+        getListStudentFromFirebase();
     }
 
-    private void initListView() {
-        ListView listView = findViewById(R.id.lvStudents);
-        listView.setAdapter(adapter);
-    }
 
     private void initListener() {
         ivBackRollCall.setOnClickListener(new View.OnClickListener() {
@@ -107,6 +108,14 @@ public class ListStudentResultActivity extends AppCompatActivity {
         btnExport = findViewById(R.id.btnExport);
         btnFinish = findViewById(R.id.btnFinish);
         ivBackRollCall = findViewById(R.id.ivBackRollCall);
+        rcvStudent = findViewById(R.id.lvStudents);
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        rcvStudent.setLayoutManager(linearLayoutManager);
+        DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
+        rcvStudent.addItemDecoration(dividerItemDecoration);
+        mListStudent = new ArrayList<>();
+        mStudentsAdapter = new StudentsAdapter(mListStudent);
+        rcvStudent.setAdapter(mStudentsAdapter);
 
     }
 

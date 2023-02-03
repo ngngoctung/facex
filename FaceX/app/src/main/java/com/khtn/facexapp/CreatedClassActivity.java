@@ -133,9 +133,9 @@ public class CreatedClassActivity extends AppCompatActivity {
     }
 
     private void gotoStudentCreatedClassActivity() {
-        Intent intent = new Intent(this,StudentCreatedClassActivity.class);
-        startActivity(intent);
-        finishAffinity();
+//        Intent intent = new Intent(this,StudentCreatedClassActivity.class);
+//        startActivity(intent);
+//        finishAffinity();
     }
 
     private void gotoManagerClassActivity() {

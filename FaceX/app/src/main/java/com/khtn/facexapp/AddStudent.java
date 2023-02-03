@@ -54,6 +54,7 @@ public class AddStudent extends AppCompatActivity {
                 }
                 else
                 {
+//                    Student student = new Student(nameOfStudent, idOfStudent);
                     Student student = new Student(nameOfStudent, idOfStudent);
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();

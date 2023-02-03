@@ -45,21 +45,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ListView
-        android:id="@+id/lvStudents"
-        android:layout_width="334dp"
-        android:layout_height="423dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="10dp"
-        android:background="@color/white"
-        app:layout_constraintBottom_toBottomOf="@+id/textView7"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0.437"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView7"
-        app:layout_constraintVertical_bias="0.343" />
 
     <Button
         android:id="@+id/btnExport"
@@ -93,4 +78,12 @@
         app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="@+id/textView7"
         app:layout_constraintTop_toBottomOf="@+id/btnExport" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lvStudents"
+        android:layout_width="336dp"
+        android:layout_height="394dp"
+        android:backgroundTint="#03FAF8F8"
+        tools:layout_editor_absoluteX="34dp"
+        tools:layout_editor_absoluteY="107dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
