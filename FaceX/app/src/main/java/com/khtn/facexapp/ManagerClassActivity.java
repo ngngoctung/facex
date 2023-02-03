@@ -67,7 +67,7 @@ public class ManagerClassActivity extends AppCompatActivity {
     }
 
     private void gotoCreateClassActivity() {
-        Intent intent = new Intent(this, CreateClassAcitivity.class);
+        Intent intent = new Intent(this, CreatedClassActivity.class);
         startActivity(intent);
     }
 
