@@ -13,6 +13,20 @@
         android:theme="@style/Theme.FaceX"
         tools:targetApi="31">
         <activity
+            android:name=".CreatClassActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
+            android:name=".CreateClassActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".StudentCreatedClassActivity"
             android:exported="false">
             <meta-data
