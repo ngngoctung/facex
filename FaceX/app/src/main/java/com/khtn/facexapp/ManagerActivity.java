@@ -94,7 +94,7 @@ public class ManagerActivity extends AppCompatActivity {
     }
 
     private void gotoResetPasswordActivity() {
-        Intent intent = new Intent(this, ResetPasswordActivity.class);
+        Intent intent = new Intent(this, TestMainActivity.class);
         startActivity(intent);
     }
 

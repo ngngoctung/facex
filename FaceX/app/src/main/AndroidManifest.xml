@@ -15,6 +15,13 @@
         android:theme="@style/Theme.FaceX"
         tools:targetApi="31">
         <activity
+            android:name=".TestMainActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".CreatClassActivity"
             android:exported="false">
             <meta-data
@@ -153,6 +160,10 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
+        <meta-data
+            android:name="com.google.mlkit.vision.DEPENDENCIES"
+            android:value="face" />
     </application>
 
 </manifest>
