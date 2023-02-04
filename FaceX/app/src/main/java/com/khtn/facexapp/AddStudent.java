@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -168,9 +169,21 @@ public class AddStudent extends AppCompatActivity {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     Toast.makeText(AddStudent.this, "Upload successful", Toast.LENGTH_LONG).show();
+                    /*
                     Student student = new Student(nameOfStudent, idOfStudent, taskSnapshot.getMetadata().getReference().getDownloadUrl().toString());
                     String uploadID = mDatabaseRef.push().getKey();
 
+
+                    FirebaseDatabase database = FirebaseDatabase.getInstance();
+                    DatabaseReference myRef = database.getReference("Class").child(request.getChooseClass());
+
+                    myRef.child(id.getText().toString().trim()).setValue(student);
+                    */
+                    Task<Uri>  urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                    while (!urlTask.isSuccessful());
+                    Uri downloadUrl = urlTask.getResult();
+                    Student student = new Student(nameOfStudent,idOfStudent,downloadUrl.toString());
+                    String uploadID = mDatabaseRef.push().getKey();
 
                     FirebaseDatabase database = FirebaseDatabase.getInstance();
                     DatabaseReference myRef = database.getReference("Class").child(request.getChooseClass());

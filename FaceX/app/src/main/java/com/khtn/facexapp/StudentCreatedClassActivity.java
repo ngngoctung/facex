@@ -31,6 +31,8 @@ public class StudentCreatedClassActivity extends AppCompatActivity {
 
     Request request = new Request();
 
+    private  DatabaseReference  databaseReference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,18 +46,19 @@ public class StudentCreatedClassActivity extends AppCompatActivity {
     }
 
     private  void getListStudentFromFirebase(){
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("Class").child(request.getChooseClass());
+        databaseReference = FirebaseDatabase.getInstance().getReference("Class").child(request.getChooseClass());
 
-        myRef.addValueEventListener(new ValueEventListener() {
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot dataSnapshot: snapshot.getChildren()) {
                     Student student = dataSnapshot.getValue(Student.class);
                     mListStudent.add(student);
                 }
-                mStudentsAdapter.notifyDataSetChanged();
 
+                mStudentsAdapter = new StudentsAdapter(StudentCreatedClassActivity.this, mListStudent);
+                rcvStudent.setAdapter(mStudentsAdapter);
+                mStudentsAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -68,15 +71,11 @@ public class StudentCreatedClassActivity extends AppCompatActivity {
     private void initUI() {
         ivBack = findViewById(R.id.ivBackListStudent);
         rcvStudent = findViewById(R.id.listCreatedStudents);
-
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         rcvStudent.setLayoutManager(linearLayoutManager);
         DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(this, DividerItemDecoration.VERTICAL);
         rcvStudent.addItemDecoration(dividerItemDecoration);
         mListStudent = new ArrayList<>();
-        mStudentsAdapter = new StudentsAdapter(mListStudent);
-        rcvStudent.setAdapter(mStudentsAdapter);
-
     }
 
     private void initListener(){
