@@ -22,21 +22,7 @@
                 android:value="" />
         </activity>
         <activity
-            android:name=".CreateClassActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".StudentCreatedClassActivity"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
-            android:name=".StudentCreatedClass"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
@@ -154,5 +140,7 @@
                 android:value="" />
         </activity>
     </application>
+
+    <uses-permission android:name="android.permission.CAMERA" ></uses-permission>
 
 </manifest>
