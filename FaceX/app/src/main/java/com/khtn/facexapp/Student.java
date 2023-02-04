@@ -3,13 +3,15 @@ package com.khtn.facexapp.model;
 public class Student {
     private String name;
     private int id;
+    private String image;
 
     public Student() {
     }
 
-    public Student(String name, int id) {
+    public Student(String name, int id, String image) {
         this.name = name;
         this.id = id;
+        this.image = image;
     }
 
     public String getName() {
@@ -28,51 +30,6 @@ public class Student {
         this.id = id;
     }
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "name='" + name + '\'' +
-                ", id=" + id +
-                '}';
-    }
+    public String getImage() { return image; }
 
-//
-//    public Student(int studentID, int imgID, String studentName, String studentDesc) {
-//        this.studentID = studentID;
-//        this.imgID = imgID;
-//        this.studentName = studentName;
-//        this.studentDesc = studentDesc;
-//    }
-//
-//    public int getStudentID() {
-//        return studentID;
-//    }
-//
-//    public void setStudentID(int studentID) {
-//        this.studentID = studentID;
-//    }
-//
-//    public int getImgID() {
-//        return imgID;
-//    }
-//
-//    public void setImgID(int imgID) {
-//        this.imgID = imgID;
-//    }
-//
-//    public String getStudentName() {
-//        return studentName;
-//    }
-//
-//    public void setStudentName(String studentName) {
-//        this.studentName = studentName;
-//    }
-//
-//    public String getStudentDesc() {
-//        return studentDesc;
-//    }
-//
-//    public void setStudentDesc(String studentDesc) {
-//        this.studentDesc = studentDesc;
-//    }
 }
